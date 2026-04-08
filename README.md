@@ -1,17 +1,7 @@
 # 🍋 Little Lemon – Front-End Capstone
 
-This is my **capstone project** for the _Meta Front-End Developer_ Professional Certificate.  
+This is my **capstone project** for the _Meta Front-End Developer_ Certificate.  
 It’s a React single-page application for **Little Lemon**, a family-owned Mediterranean restaurant in Chicago.
-
----
-
-## ✨ Features
-
-- **Reservation Banner** with hero image and CTA button  
-- **Reservation Form** (date, time, guests, occasion, contact data)  
-- **Confirmation Page** with follow-up actions (view menu, order online, home)  
-- **Menu Teaser** section with button and 3 dish photos  
-- **About Page** with story of Mario & Adrian + atmosphere & food images  
 
 ---
 

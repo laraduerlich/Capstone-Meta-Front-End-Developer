@@ -4,17 +4,14 @@ import { Link } from "react-router-dom";
 export default function ConfirmationPage() {
   return (
     <header className="confirmation-page">
-      {/* Hintergrundbild */}
       <img
         className="confirmation-bg"
         src={HeroImage}
         alt="Little Lemon Ingredients"
       />
 
-      {/* halbtransparenter Overlay, damit Textkarte besser lesbar ist */}
       <div className="confirmation-overlay" />
 
-      {/* Weiße Card im gleichen Stil wie Booking/Menu */}
       <section className="menu-section confirmation-card">
         <h1 className="menu-title confirmation-title">
           Reservierung bestätigt

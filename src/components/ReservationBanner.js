@@ -4,8 +4,7 @@ import BannerImage from "../images/photos/seasonal-menu.jpg";
 export default function ReservationBanner() {
   return (
     <section className="reservation-banner">
-      <div className="reservation-banner-inner">
-        {/* Textbereich links */}
+      <div className="reservation-banner-inner">        
         <div className="reservation-banner-text">
           <h1>Little Lemon</h1>
           <h2>Chicago</h2>
@@ -19,7 +18,6 @@ export default function ReservationBanner() {
           </Link>
         </div>
 
-        {/* Bildbereich rechts */}
         <div className="reservation-banner-image">
           <img
             src={BannerImage}

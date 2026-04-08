@@ -6,7 +6,6 @@ export default function AboutPage() {
   return (
     <section className="about-page">
       <div className="about-page-inner">
-        {/* Text-Spalte */}
         <div className="about-page-text">
           <h1>Über Little Lemon</h1>
           <h2>Ein Stück Mittelmeer mitten in Chicago</h2>
@@ -33,9 +32,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Bild-Spalte */}
         <div className="about-page-images">
-          {/* Großes Stimmungsbild oben */}
           <figure className="about-image about-image--atmosphere">
             <img
               src={AtmosphereImage}
@@ -43,7 +40,6 @@ export default function AboutPage() {
             />
           </figure>
 
-          {/* Zwei kleinere Karten darunter nebeneinander */}
           <div className="about-image-row">
             <figure className="about-image about-image--brothers">
               <img

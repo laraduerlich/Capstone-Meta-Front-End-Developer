@@ -1,7 +1,3 @@
-/* =========================
-   GLOBAL STYLES & VARIABLES
-   ========================= */
-
 :root {
   --color-primary: #495e57;
   --color-secondary: #f4ce14;
@@ -42,10 +38,6 @@ p {
   font-family: var(--font-body);
 }
 
-/* =========================
-   FORM ELEMENTE
-   ========================= */
-
 input,
 select,
 option,
@@ -61,10 +53,6 @@ input,
 select {
   width: 10rem;
 }
-
-/* =========================
-   GENERELLE ELEMENTE
-   ========================= */
 
 menu {
   list-style: none;
@@ -83,16 +71,11 @@ button {
   margin-top: 1.5rem;
 }
 
-/* Links – React Router <Link> sollte eine Klasse bekommen (z.B. .link) */
 a:link,
 a:visited {
   text-decoration: none;
   color: var(--color-text);
 }
-
-/* =========================
-   BUTTONS
-   ========================= */
 
 .action-button {
   background-color: var(--color-secondary);
@@ -148,39 +131,30 @@ a:visited {
   color: var(--color-dark) !important;
 }
 
-/* =========================
-   NAVBAR
-   ========================= */
-
 .navbar {
   background-color: #ffffff;
   padding: 2.5rem 5rem 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  position: relative;   /* neu */
-  z-index: 10;          /* neu – Navbar + Schatten liegen über dem Inhalt */
+  position: relative;
+  z-index: 10;
 }
 
-
-/* Desktop-Navbar: .navbar.desktop */
 .navbar.desktop {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Logo-Container */
 .navbar-logo {
   display: flex;
   align-items: center;
 }
 
-/* Logo-Bild */
 .nav-image {
-  max-height: 5rem;           /* Logo-Größe */
+  max-height: 5rem;
   width: auto;
 }
 
-/* UL für die Links – Desktop */
 .navbar-menu.desktop {
   display: flex;
   align-items: center;
@@ -188,15 +162,13 @@ a:visited {
   margin: 0;
   padding: 0;
   gap: 2rem;
-  font-size: 1.5rem;         
+  font-size: 1.5rem;
 }
 
-/* Generische LI-Styles (Desktop) */
 .navbar-menu.desktop > li {
   text-align: center;
 }
 
-/* Links */
 .navbar-menu a {
   display: inline-block;
   text-decoration: none;
@@ -206,23 +178,18 @@ a:visited {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-radius: 999px;               /* „Pille“ */
+  border-radius: 999px;
   transition:
     background-color var(--transition-med),
     color var(--transition-med),
     transform 0.15s ease-in-out;
 }
 
-/* Hover-Effekt */
 .hover-effect:hover {
   background-color: var(--color-secondary);
   color: var(--color-dark);
   transform: translateY(-1px);
 }
-
-/* =========================
-   HERO / CALL TO ACTION
-   ========================= */
 
 .call-to-action {
   background-color: var(--color-primary);
@@ -253,12 +220,8 @@ a:visited {
   object-fit: cover;
 }
 
-/* =========================
-   RESERVATION BANNER
-   ========================= */
-
 .reservation-banner {
-  background-color: var(--color-primary);   /* dunkles Grün wie Hero */
+  background-color: var(--color-primary);
   color: var(--color-text-invert);
   padding: 1.75rem 5rem;
 }
@@ -272,7 +235,6 @@ a:visited {
   gap: 2.5rem;
 }
 
-/* Textbereich */
 .reservation-banner-text h1 {
   margin: 0;
   font-family: var(--font-heading);
@@ -293,7 +255,6 @@ a:visited {
   max-width: 32rem;
 }
 
-/* Button – gelbe Pille */
 .reservation-banner-button {
   display: inline-block;
   padding: 0.6rem 1.8rem;
@@ -322,25 +283,19 @@ a:visited {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
 }
 
-/* Bildbereich – wie in Bild 7, NICHT strecken */
 .reservation-banner-image {
   justify-self: end;
-  /* keine max-height mehr, das Bild regelt die Höhe selbst */
 }
 
 .reservation-banner-image img {
   display: block;
   width: 100%;
-  height: auto;                 /* wichtig: nicht 100% */
-  max-width: 340px;             /* ähnlich wie im Figma-Design */
+  height: auto;
+  max-width: 340px;
   object-fit: cover;
   border-radius: var(--border-radius-md);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
-
-/* =========================
-   RESERVATION BANNER – RESPONSIVE
-   ========================= */
 
 @media screen and (max-width: 60rem) {
   .reservation-banner {
@@ -384,10 +339,6 @@ a:visited {
   }
 }
 
-/* =========================
-   MENU TEASER
-   ========================= */
-
 .menu-teaser {
   padding: 2.5rem 5rem 3rem;
   background-color: #ffffff;
@@ -397,13 +348,11 @@ a:visited {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr); /* fast 50/50 */
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
   gap: 2.5rem;
   align-items: center;
 }
 
-
-/* Text-Spalte */
 .menu-teaser-text h2 {
   margin: 0 0 1rem;
   font-family: var(--font-heading);
@@ -412,7 +361,6 @@ a:visited {
   position: relative;
 }
 
-/* gelber Strich wie bei menu-title */
 .menu-teaser-text h2::after {
   content: "";
   position: absolute;
@@ -432,7 +380,6 @@ a:visited {
   color: var(--color-dark);
 }
 
-/* Button – ähnlich wie Reservation-Banner */
 .menu-teaser-button {
   display: inline-block;
   margin-top: 1.6rem;
@@ -461,27 +408,21 @@ a:visited {
   transform: translateY(-1px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
 }
-/* Foto-Spalte: 3 querformatige Karten nebeneinander */
-.menu-teaser-photo img {
-  display: block;
-  width: 100%;          /* passt sich der flexiblen Breite an */
-  height: 100%;         /* nimmt die feste Höhe der Karte */
-  object-fit: cover;    /* füllt den Rahmen, schneidet nur wenig ab */
-  object-position: center;  /* zentriert – bei Bedarf ändern */
-}
-
 
 .menu-teaser-photo img {
   display: block;
   width: 100%;
-  height: auto;        /* Bild behält sein Querformat */
-  object-fit: cover;   /* kannst du auch weglassen, schadet hier aber nicht */
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-
-/* =========================
-   MENU TEASER – RESPONSIVE
-   ========================= */
+.menu-teaser-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
 
 @media screen and (max-width: 60rem) {
   .menu-teaser {
@@ -504,11 +445,11 @@ a:visited {
   }
 
   .menu-teaser-photos {
-    grid-template-columns: 1fr 1fr; /* 2 nebeneinander auf sehr klein */
+    grid-template-columns: 1fr 1fr;
   }
 
   .menu-teaser-photo:last-child {
-    grid-column: 1 / -1;           /* drittes Bild unten über ganze Breite */
+    grid-column: 1 / -1;
   }
 
   .menu-teaser-photo {
@@ -516,27 +457,21 @@ a:visited {
   }
 }
 
-
-/* =========================
-   SIMPLE MENU LIST
-   ========================= */
-
 .menu-section {
   padding: 3rem 5rem 3rem;
   max-width: 900px;
   margin: 0 auto 4rem;
   margin-top: 2rem;
-  background-color: #ffffff;                   /* hell, vom Footer abgesetzt */
+  background-color: #ffffff;
   border-radius: var(--border-radius-md);
 }
 
-/* Titel mit Unterstreichung in Gelb */
 .menu-title {
   font-size: 2rem;
   margin: 0 0 1.5rem;
   letter-spacing: 0.03em;
   font-family: var(--font-heading);
-  color: var(--color-primary);                 /* Grün */
+  color: var(--color-primary);
   position: relative;
 }
 
@@ -547,18 +482,16 @@ a:visited {
   bottom: -0.4rem;
   width: 3.5rem;
   height: 0.25rem;
-  background-color: var(--color-secondary);    /* Gelbe Linie */
+  background-color: var(--color-secondary);
   border-radius: 999px;
 }
 
-/* Liste selbst */
 .menu-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* einzelnes Gericht in der Liste */
 .menu-item {
   padding: 1rem 0;
   border-bottom: 1px solid var(--color-light);
@@ -567,13 +500,11 @@ a:visited {
     transform var(--transition-fast);
 }
 
-/* dezent Highlight beim Hover */
 .menu-item:hover {
-  background-color: #fdf9e3;                   /* ganz leichtes Gelb */
+  background-color: #fdf9e3;
   transform: translateX(2px);
 }
 
-/* Kopfzeile: Name links, Preis rechts */
 .menu-item-header {
   display: flex;
   justify-content: space-between;
@@ -581,23 +512,17 @@ a:visited {
   gap: 1rem;
 }
 
-/* Name */
 .menu-item-name {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-primary);                 /* Grün */
+  color: var(--color-primary);
 }
 
-/* Preis als kleiner gelber Badge */
 .menu-item-price {
   font-size: 0.95rem;
   font-weight: 700;
 }
-/* =========================
-   RESERVATION FORM (Menu-Style)
-   ========================= */
 
-/* Formular innerhalb der Card (menu-section) */
 .reservation-form {
   margin-top: 1rem;
   display: grid;
@@ -605,43 +530,16 @@ a:visited {
   gap: 1.25rem 1.5rem;
 }
 
-/* Label + Feld untereinander, wie beim Rest der Seite */
 .reservation-form label {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-
-  font-family: var(--font-heading);  /* wie Überschriften / Gerichte */
-  font-size: 1.1rem;                 /* wie .menu-item-name */
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-primary);       /* dein Grün */
+  color: var(--color-primary);
 }
 
-
-/* Inputs & Selects: an globale Styles angelehnt,
-   aber volle Breite und etwas „cardiger“ */
-.reservation-form input,
-.reservation-form select {
-  width: 100%; /* überschreibt dein globales width: 10rem; */
-  background-color: var(--color-lighter);
-  border: none;
-  padding: 0.5rem 0.6rem;
-  border-radius: var(--border-radius-sm);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--color-dark);
-  outline: none;
-}
-
-/* Kontaktfelder unter den ersten 4, über volle Breite, untereinander */
-.reservation-contact-group {
-  grid-column: 1 / -1;             /* über beide Spalten */
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-/* Inputs bleiben wie bisher: */
 .reservation-form input,
 .reservation-form select {
   width: 100%;
@@ -655,20 +553,38 @@ a:visited {
   outline: none;
 }
 
-/* Optional: leichter Fokus-Rand */
+.reservation-contact-group {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.reservation-form input,
+.reservation-form select {
+  width: 100%;
+  background-color: var(--color-lighter);
+  border: none;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-dark);
+  outline: none;
+}
+
 .reservation-form input:focus,
 .reservation-form select:focus {
   outline: 2px solid var(--color-secondary);
 }
 
-/* Pill-Button */
 .reservation-submit {
-  grid-column: 1 / -1;              /* über beide Spalten */
-  justify-self: flex-start;         /* oder flex-end, wenn rechts gewünscht */
+  grid-column: 1 / -1;
+  justify-self: flex-start;
   margin-top: 0.5rem;
-  padding: 0.6rem 1.8rem;           /* etwas mehr Padding */
+  padding: 0.6rem 1.8rem;
   border: none;
-  border-radius: 999px;             /* PILL-FORM */
+  border-radius: 999px;
   background-color: var(--color-secondary);
   color: var(--color-dark);
   font-family: var(--font-body);
@@ -691,21 +607,16 @@ a:visited {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
-/* Responsive: auf kleinen Screens einspaltig */
 @media screen and (max-width: 600px) {
   .reservation-form {
     grid-template-columns: 1fr;
   }
 
   .reservation-submit {
-    justify-self: stretch; /* Button volle Breite */
+    justify-self: stretch;
     text-align: center;
   }
 }
-
-/* =========================
-   CONFIRMATION PAGE
-   ========================= */
 
 .confirmation-page {
   position: relative;
@@ -717,7 +628,6 @@ a:visited {
   overflow: hidden;
 }
 
-/* Hintergrundbild Vollbreite */
 .confirmation-bg {
   position: absolute;
   inset: 0;
@@ -726,7 +636,6 @@ a:visited {
   object-fit: cover;
 }
 
-/* dunkler Overlay für bessere Lesbarkeit */
 .confirmation-overlay {
   position: absolute;
   inset: 0;
@@ -737,7 +646,6 @@ a:visited {
   );
 }
 
-/* Weiße Karte – nutzt Menu-Section als Basis */
 .confirmation-card {
   position: relative;
   z-index: 1;
@@ -747,12 +655,10 @@ a:visited {
   margin: 0 1.5rem;
 }
 
-/* Titel wie Menu-Title, aber zentriert (kommt aus .booking-title) */
 .confirmation-title {
   text-align: center;
 }
 
-/* Text in der Karte */
 .confirmation-text {
   margin: 0.4rem 0;
   text-align: center;
@@ -761,7 +667,6 @@ a:visited {
   color: var(--color-dark);
 }
 
-/* Button-Gruppe unten */
 .confirmation-actions {
   margin-top: 2rem;
   display: flex;
@@ -770,7 +675,6 @@ a:visited {
   justify-content: center;
 }
 
-/* Pillenartige Buttons im Little-Lemon-Stil */
 .confirmation-button {
   display: inline-block;
   padding: 0.6rem 1.8rem;
@@ -800,10 +704,6 @@ a:visited {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
 }
 
-/* =========================
-   CONFIRMATION – RESPONSIVE
-   ========================= */
-
 @media screen and (max-width: 600px) {
   .confirmation-page {
     margin-top: 0;
@@ -824,114 +724,9 @@ a:visited {
   }
 }
 
-
-/* =========================
-   SPECIALS
-   ========================= */
-
-.specials {
-  padding: 2rem 5rem 0;
-  animation: slideDownFade 0.33s ease-in-out;
-}
-
-.subsection {
-  margin-top: -2rem;
-}
-
-.specials-topbar {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.specials-topbar > h1 {
-  font-size: 2.5rem;
-  margin: 0 1rem 1rem 0;
-}
-
-.specials-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2vw;
-}
-
-.menu-card {
-  background-color: var(--color-light);
-  padding-bottom: 1rem;
-}
-
-.menu-card > img {
-  height: 25vh;
-  width: 100%;
-  object-fit: cover;
-}
-
-.menu-card-content {
-  margin: 0.5rem 2rem 1rem;
-}
-
-.menu-card-content > h1 {
-  font-size: 2.2rem;
-  margin: 0;
-}
-
-.menu-card-content > h3 {
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-.specials-carousel {
-  display: none;
-  margin: 0 2rem;
-}
-
-/* =========================
-   TESTIMONIALS
-   ========================= */
-
-.testimonials {
-  padding: 0 5rem 2rem;
-  animation: slideDownFade 0.33s ease-in-out;
-}
-
-.testimonials-topbar > h1 {
-  text-align: center;
-  font-size: 3rem;
-  margin: 4rem 0 1rem;
-}
-
-.testimonials-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 2vw;
-  align-items: center;
-}
-
-.testimonial-card {
-  background-color: var(--color-light);
-  padding: 1rem 1rem 0;
-}
-
-.testimonial-card > img {
-  width: 3rem;
-  height: 3rem;
-  object-fit: contain;
-}
-
-.testimonials-carousel {
-  display: none;
-  background-color: var(--color-light);
-  padding-bottom: 0;
-}
-
-/* =========================
-   ABOUT PAGE
-   ========================= */
-
 .about-page {
   padding: 3rem 5rem 4rem;
-  padding-top: 3.5rem;  /* z.B. etwas mehr Abstand zum Header */
+  padding-top: 3.5rem;
   background-color: #ffffff;
   margin-top: 0;
 }
@@ -945,16 +740,14 @@ a:visited {
   align-items: center;
 }
 
-/* Text-Spalte */
 .about-page-text h1 {
   margin: 0 0 0.4rem;
   font-family: var(--font-heading);
   font-size: 2.5rem;
   color: var(--color-primary);
-  position: relative; /* für gelben Strich */
+  position: relative;
 }
 
-/* Gelber Strich unter der Hauptüberschrift – wie bei .menu-title */
 .about-page-text h1::after {
   content: "";
   position: absolute;
@@ -981,25 +774,21 @@ a:visited {
   color: var(--color-dark);
 }
 
-/* Bild-Spalte: klares Karten-Layout */
 .about-page-images {
   display: grid;
   grid-template-rows: auto auto;
   gap: 1rem;
 }
 
-/* Oberes, großes Bild (Atmosphäre) */
 .about-image--atmosphere {
   height: 14rem;
 }
 
-/* Untere Bildreihe: zwei Karten nebeneinander */
 .about-image-row {
   display: flex;
   gap: 1rem;
 }
 
-/* Basis-Styles für jedes Bild */
 .about-image {
   flex: 1;
   border-radius: var(--border-radius-md);
@@ -1012,10 +801,6 @@ a:visited {
   height: 100%;
   object-fit: cover;
 }
-
-/* =========================
-   ABOUT – RESPONSIVE
-   ========================= */
 
 @media screen and (max-width: 60rem) {
   .about-page {
@@ -1050,10 +835,6 @@ a:visited {
   }
 }
 
-/* =========================
-   FOOTER
-   ========================= */
-
 .footer {
   background-color: var(--color-primary);
   color: var(--color-text-invert);
@@ -1061,13 +842,11 @@ a:visited {
   margin-top: 0;
 }
 
-/* Logo + 3 Spalten nebeneinander */
 .footer-inner {
   display: flex;
   align-items: flex-start;
 }
 
-/* Logo-Container */
 .footer-logo {
   display: flex;
   align-items: center;
@@ -1075,39 +854,33 @@ a:visited {
   margin-right: 30rem;
 }
 
-/* Logo-Größe hier steuern */
 .footer-logo img {
-  height: 160px;       
+  height: 160px;
   width: auto;
   padding: 0.5rem;
   border-radius: 4px;
 }
 
-/* Spalten (Navigation / Contact / Connect) */
 .footer-column {
-  flex: 1;                
+  flex: 1;
   min-width: 150px;
 }
 
-/* Abstand zwischen den Spalten untereinander */
 .footer-column + .footer-column {
-  margin-left: 2rem;   
+  margin-left: 2rem;
 }
 
-/* Überschriften im Footer */
 .footer-header {
   margin: 0 0 0.5rem;
   font-size: 2rem;
 }
 
-/* Listen im Footer */
 .footer-links {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-/* Einträge & Links im Footer */
 .footer-links li,
 .footer-links a {
   text-align: left;
@@ -1120,7 +893,7 @@ a:visited {
 
 .footer-links a:hover {
   text-decoration: underline;
-  background-color: transparent; /* kein Hover-Hintergrund nötig */
+  background-color: transparent;
 }
 
 .footer-note {
@@ -1132,22 +905,18 @@ a:visited {
   opacity: 0.9;
 }
 
-/* =========================
-   FOOTER – RESPONSIVE
-   ========================= */
-
 @media screen and (max-width: 600px) {
   .footer {
     padding: 1.5rem 2rem 1rem;
   }
 
   .footer-inner {
-    flex-direction: column;   /* untereinander auf kleinen Screens */
+    flex-direction: column;
     gap: 1.5rem;
   }
 
   .footer-logo {
-    justify-content: center;  /* Logo zentriert auf Mobile */
+    justify-content: center;
   }
 
   .footer-logo img {
@@ -1164,71 +933,6 @@ a:visited {
   }
 }
 
-/* =========================
-   RESERVATION / CONFIRMATION
-   ========================= */
-
-.reserve-table {
-  position: relative;
-  text-align: center;
-  color: var(--color-text-invert);
-  margin-top: -1.4rem;
-}
-
-.header-reserve {
-  width: 100vw;
-  height: 20rem;
-  object-fit: cover;
-}
-
-.reserve-header-text {
-  background-color: var(--color-primary);
-  padding: 0 3rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 25px;
-  border-radius: var(--border-radius-md);
-}
-
-.reservation-form {
-  padding: 2rem 0 0.5rem;
-  text-align: center;
-}
-
-.reservation-form > div {
-  margin-bottom: 1.5rem;
-}
-
-.confirmation-header {
-  position: relative;
-  text-align: center;
-  color: var(--color-text-invert);
-  margin-top: -1.4rem;
-  min-height: 70vh;
-}
-
-.confirmation-image {
-  height: 70vh;
-  width: 100%;
-  object-fit: cover;
-}
-
-.redirect-buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 12vw;
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* =========================
-   ANIMATIONS
-   ========================= */
-
 @keyframes slideDownFade {
   0% {
     transform: translateY(-15%);
@@ -1240,19 +944,6 @@ a:visited {
   }
 }
 
-/* =========================
-   CAROUSEL
-   ========================= */
-
-.carousel > .thumbs-wrapper {
-  display: none;
-}
-
-/* =========================
-   MEDIA QUERIES
-   ========================= */
-
-/* bis 60rem (~960px) */
 @media screen and (max-width: 60rem) {
   .action-button {
     font-size: 1.2rem;
@@ -1292,7 +983,6 @@ a:visited {
   }
 }
 
-/* bis 50rem (~800px) */
 @media screen and (max-width: 50rem) {
   .hero-text > p {
     font-size: 0.8rem;
@@ -1324,7 +1014,6 @@ a:visited {
   }
 }
 
-/* bis 600px (überschreibt z.T. die rem-Queries) */
 @media screen and (max-width: 600px) {
   .hero-text > h1 {
     font-size: 2.2rem;

@@ -1,13 +1,1416 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* =========================
+   GLOBAL STYLES & VARIABLES
+   ========================= */
+
+:root {
+  --color-primary: #495e57;
+  --color-secondary: #f4ce14;
+  --color-light: #edefee;
+  --color-lighter: #eeeeee;
+  --color-dark: #464646;
+  --color-text: #000000;
+  --color-text-invert: #ffffff;
+
+  --font-heading: "Markazi Text", "Karla", serif;
+  --font-body: "Karla", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  --border-radius-sm: 0.2rem;
+  --border-radius-md: 0.5rem;
+
+  --transition-fast: 0.2s ease-in-out;
+  --transition-med: 0.25s ease-in-out;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  font-family: var(--font-heading);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--color-text);
+  background-color: #ffffff;
+}
+
+label,
+input,
+select,
+textarea,
+p {
+  font-family: var(--font-body);
+}
+
+/* =========================
+   FORM ELEMENTE
+   ========================= */
+
+input,
+select,
+option,
+textarea {
+  background-color: var(--color-lighter);
+  border: none;
+  padding: 5px;
+  border-radius: var(--border-radius-sm);
+  resize: none;
+}
+
+input,
+select {
+  width: 10rem;
+}
+
+/* =========================
+   GENERELLE ELEMENTE
+   ========================= */
+
+menu {
+  list-style: none;
+  display: grid;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.burger-icon {
+  margin-top: 1.5rem;
+}
+
+/* Links – React Router <Link> sollte eine Klasse bekommen (z.B. .link) */
+a:link,
+a:visited {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.action-button {
+  background-color: var(--color-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-body);
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+    color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.action-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-lighter);
+  border: 1px solid var(--color-light);
+}
+
+.special-button {
+  background-color: var(--color-secondary);
+  border-radius: var(--border-radius-sm);
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+    color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.special-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-lighter);
+  border: 0.1rem solid #000;
+}
+
+.redirect-button {
+  background-color: var(--color-dark);
+  color: var(--color-text-invert) !important;
+  padding: 2vh 2rem;
+  border-radius: var(--border-radius-md);
+  min-width: 12vw;
+  font-family: var(--font-body);
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.redirect-button:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-dark) !important;
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar {
+  background-color: #ffffff;
+  padding: 2.5rem 5rem 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  position: relative;   /* neu */
+  z-index: 10;          /* neu – Navbar + Schatten liegen über dem Inhalt */
+}
+
+
+/* Desktop-Navbar: .navbar.desktop */
+.navbar.desktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo-Container */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo-Bild */
+.nav-image {
+  max-height: 5rem;           /* Logo-Größe */
+  width: auto;
+}
+
+/* UL für die Links – Desktop */
+.navbar-menu.desktop {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+  font-size: 1.5rem;         
+}
+
+/* Generische LI-Styles (Desktop) */
+.navbar-menu.desktop > li {
+  text-align: center;
+}
+
+/* Links */
+.navbar-menu a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-primary);
+  padding: 0.25rem 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 999px;               /* „Pille“ */
+  transition:
+    background-color var(--transition-med),
+    color var(--transition-med),
+    transform 0.15s ease-in-out;
+}
+
+/* Hover-Effekt */
+.hover-effect:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-dark);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   HERO / CALL TO ACTION
+   ========================= */
+
+.call-to-action {
+  background-color: var(--color-primary);
+  color: var(--color-text-invert);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1.25rem 5rem 1.2rem;
+  margin-top: 0rem;
+}
+
+.hero-text > h1 {
+  font-size: 3rem;
+  margin: 0 0 -3rem;
+}
+
+.hero-text > h2 {
+  font-size: 2.5rem;
+}
+
+.hero-image {
+  max-height: 17rem;
+  padding-left: 2rem;
+}
+
+.hero-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   RESERVATION BANNER
+   ========================= */
+
+.reservation-banner {
+  background-color: var(--color-primary);   /* dunkles Grün wie Hero */
+  color: var(--color-text-invert);
+  padding: 1.75rem 5rem;
+}
+
+.reservation-banner-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Textbereich */
+.reservation-banner-text h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+}
+
+.reservation-banner-text h2 {
+  margin: -0.4rem 0 1.2rem;
+  font-family: var(--font-heading);
+  font-size: 2.3rem;
+}
+
+.reservation-banner-text p {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 32rem;
+}
+
+/* Button – gelbe Pille */
+.reservation-banner-button {
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--color-secondary);
+  color: var(--color-dark) !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform 0.12s ease-in-out,
+    box-shadow var(--transition-fast);
+}
+
+.reservation-banner-button:hover {
+  background-color: #ffe047;
+  color: var(--color-dark) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+}
+
+/* Bildbereich – wie in Bild 7, NICHT strecken */
+.reservation-banner-image {
+  justify-self: end;
+  /* keine max-height mehr, das Bild regelt die Höhe selbst */
+}
+
+.reservation-banner-image img {
+  display: block;
+  width: 100%;
+  height: auto;                 /* wichtig: nicht 100% */
+  max-width: 340px;             /* ähnlich wie im Figma-Design */
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   RESERVATION BANNER – RESPONSIVE
+   ========================= */
+
+@media screen and (max-width: 60rem) {
+  .reservation-banner {
+    padding: 1.5rem 2rem;
+  }
+
+  .reservation-banner-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .reservation-banner-image {
+    justify-self: center;
+  }
+
+  .reservation-banner-image img {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .reservation-banner {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .reservation-banner-text h1 {
+    font-size: 2.4rem;
+  }
+
+  .reservation-banner-text h2 {
+    font-size: 1.9rem;
+  }
+
+  .reservation-banner-text p {
+    font-size: 0.9rem;
+  }
+
+  .reservation-banner-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* =========================
+   MENU TEASER
+   ========================= */
+
+.menu-teaser {
+  padding: 2.5rem 5rem 3rem;
+  background-color: #ffffff;
+}
+
+.menu-teaser-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr); /* fast 50/50 */
+  gap: 2.5rem;
+  align-items: center;
+}
+
+
+/* Text-Spalte */
+.menu-teaser-text h2 {
+  margin: 0 0 1rem;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-primary);
+  position: relative;
+}
+
+/* gelber Strich wie bei menu-title */
+.menu-teaser-text h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.4rem;
+  width: 3.5rem;
+  height: 0.25rem;
+  background-color: var(--color-secondary);
+  border-radius: 999px;
+}
+
+.menu-teaser-text p {
+  margin: 1.1rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-dark);
+}
+
+/* Button – ähnlich wie Reservation-Banner */
+.menu-teaser-button {
+  display: inline-block;
+  margin-top: 1.6rem;
+  padding: 0.6rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--color-secondary);
+  color: var(--color-dark) !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform 0.12s ease-in-out,
+    box-shadow var(--transition-fast);
+}
+
+.menu-teaser-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-invert) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+}
+/* Foto-Spalte: 3 querformatige Karten nebeneinander */
+.menu-teaser-photo img {
+  display: block;
+  width: 100%;          /* passt sich der flexiblen Breite an */
+  height: 100%;         /* nimmt die feste Höhe der Karte */
+  object-fit: cover;    /* füllt den Rahmen, schneidet nur wenig ab */
+  object-position: center;  /* zentriert – bei Bedarf ändern */
+}
+
+
+.menu-teaser-photo img {
+  display: block;
+  width: 100%;
+  height: auto;        /* Bild behält sein Querformat */
+  object-fit: cover;   /* kannst du auch weglassen, schadet hier aber nicht */
+}
+
+
+/* =========================
+   MENU TEASER – RESPONSIVE
+   ========================= */
+
+@media screen and (max-width: 60rem) {
+  .menu-teaser {
+    padding: 2rem 2rem 2.5rem;
+  }
+
+  .menu-teaser-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .menu-teaser-photos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu-teaser {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .menu-teaser-photos {
+    grid-template-columns: 1fr 1fr; /* 2 nebeneinander auf sehr klein */
+  }
+
+  .menu-teaser-photo:last-child {
+    grid-column: 1 / -1;           /* drittes Bild unten über ganze Breite */
+  }
+
+  .menu-teaser-photo {
+    height: 130px;
+  }
+}
+
+
+/* =========================
+   SIMPLE MENU LIST
+   ========================= */
+
+.menu-section {
+  padding: 3rem 5rem 3rem;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  margin-top: 2rem;
+  background-color: #ffffff;                   /* hell, vom Footer abgesetzt */
+  border-radius: var(--border-radius-md);
+}
+
+/* Titel mit Unterstreichung in Gelb */
+.menu-title {
+  font-size: 2rem;
+  margin: 0 0 1.5rem;
+  letter-spacing: 0.03em;
+  font-family: var(--font-heading);
+  color: var(--color-primary);                 /* Grün */
+  position: relative;
+}
+
+.menu-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.4rem;
+  width: 3.5rem;
+  height: 0.25rem;
+  background-color: var(--color-secondary);    /* Gelbe Linie */
+  border-radius: 999px;
+}
+
+/* Liste selbst */
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* einzelnes Gericht in der Liste */
+.menu-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-light);
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+/* dezent Highlight beim Hover */
+.menu-item:hover {
+  background-color: #fdf9e3;                   /* ganz leichtes Gelb */
+  transform: translateX(2px);
+}
+
+/* Kopfzeile: Name links, Preis rechts */
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+/* Name */
+.menu-item-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);                 /* Grün */
+}
+
+/* Preis als kleiner gelber Badge */
+.menu-item-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+/* =========================
+   RESERVATION FORM (Menu-Style)
+   ========================= */
+
+/* Formular innerhalb der Card (menu-section) */
+.reservation-form {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+}
+
+/* Label + Feld untereinander, wie beim Rest der Seite */
+.reservation-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  font-family: var(--font-heading);  /* wie Überschriften / Gerichte */
+  font-size: 1.1rem;                 /* wie .menu-item-name */
+  font-weight: 700;
+  color: var(--color-primary);       /* dein Grün */
+}
+
+
+/* Inputs & Selects: an globale Styles angelehnt,
+   aber volle Breite und etwas „cardiger“ */
+.reservation-form input,
+.reservation-form select {
+  width: 100%; /* überschreibt dein globales width: 10rem; */
+  background-color: var(--color-lighter);
+  border: none;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-dark);
+  outline: none;
+}
+
+/* Kontaktfelder unter den ersten 4, über volle Breite, untereinander */
+.reservation-contact-group {
+  grid-column: 1 / -1;             /* über beide Spalten */
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* Inputs bleiben wie bisher: */
+.reservation-form input,
+.reservation-form select {
+  width: 100%;
+  background-color: var(--color-lighter);
+  border: none;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-dark);
+  outline: none;
+}
+
+/* Optional: leichter Fokus-Rand */
+.reservation-form input:focus,
+.reservation-form select:focus {
+  outline: 2px solid var(--color-secondary);
+}
+
+/* Pill-Button */
+.reservation-submit {
+  grid-column: 1 / -1;              /* über beide Spalten */
+  justify-self: flex-start;         /* oder flex-end, wenn rechts gewünscht */
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.8rem;           /* etwas mehr Padding */
+  border: none;
+  border-radius: 999px;             /* PILL-FORM */
+  background-color: var(--color-secondary);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform 0.15s ease-in-out,
+    box-shadow var(--transition-fast);
+}
+
+.reservation-submit:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-invert);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive: auf kleinen Screens einspaltig */
+@media screen and (max-width: 600px) {
+  .reservation-form {
+    grid-template-columns: 1fr;
+  }
+
+  .reservation-submit {
+    justify-self: stretch; /* Button volle Breite */
+    text-align: center;
+  }
+}
+
+/* =========================
+   CONFIRMATION PAGE
+   ========================= */
+
+.confirmation-page {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0rem;
+  overflow: hidden;
+}
+
+/* Hintergrundbild Vollbreite */
+.confirmation-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* dunkler Overlay für bessere Lesbarkeit */
+.confirmation-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(73, 94, 87, 0.8),
+    rgba(73, 94, 87, 0.5)
+  );
+}
+
+/* Weiße Karte – nutzt Menu-Section als Basis */
+.confirmation-card {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  width: 100%;
+  padding: 2.5rem 3rem 2.3rem;
+  margin: 0 1.5rem;
+}
+
+/* Titel wie Menu-Title, aber zentriert (kommt aus .booking-title) */
+.confirmation-title {
+  text-align: center;
+}
+
+/* Text in der Karte */
+.confirmation-text {
+  margin: 0.4rem 0;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-dark);
+}
+
+/* Button-Gruppe unten */
+.confirmation-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* Pillenartige Buttons im Little-Lemon-Stil */
+.confirmation-button {
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--color-secondary);
+  color: var(--color-dark) !important;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform 0.12s ease-in-out,
+    box-shadow var(--transition-fast);
+}
+
+.confirmation-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-invert) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================
+   CONFIRMATION – RESPONSIVE
+   ========================= */
+
+@media screen and (max-width: 600px) {
+  .confirmation-page {
+    margin-top: 0;
+  }
+
+  .confirmation-card {
+    padding: 2rem 1.5rem 2.2rem;
+    margin: 0 1rem;
+  }
+
+  .confirmation-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .confirmation-button {
+    width: 100%;
+  }
+}
+
+
+/* =========================
+   SPECIALS
+   ========================= */
+
+.specials {
+  padding: 2rem 5rem 0;
+  animation: slideDownFade 0.33s ease-in-out;
+}
+
+.subsection {
+  margin-top: -2rem;
+}
+
+.specials-topbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.specials-topbar > h1 {
+  font-size: 2.5rem;
+  margin: 0 1rem 1rem 0;
+}
+
+.specials-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2vw;
+}
+
+.menu-card {
+  background-color: var(--color-light);
+  padding-bottom: 1rem;
+}
+
+.menu-card > img {
+  height: 25vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.menu-card-content {
+  margin: 0.5rem 2rem 1rem;
+}
+
+.menu-card-content > h1 {
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.menu-card-content > h3 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.specials-carousel {
+  display: none;
+  margin: 0 2rem;
+}
+
+/* =========================
+   TESTIMONIALS
+   ========================= */
+
+.testimonials {
+  padding: 0 5rem 2rem;
+  animation: slideDownFade 0.33s ease-in-out;
+}
+
+.testimonials-topbar > h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin: 4rem 0 1rem;
+}
+
+.testimonials-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 2vw;
+  align-items: center;
+}
+
+.testimonial-card {
+  background-color: var(--color-light);
+  padding: 1rem 1rem 0;
+}
+
+.testimonial-card > img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+}
+
+.testimonials-carousel {
+  display: none;
+  background-color: var(--color-light);
+  padding-bottom: 0;
+}
+
+/* =========================
+   ABOUT PAGE
+   ========================= */
+
+.about-page {
+  padding: 3rem 5rem 4rem;
+  padding-top: 3.5rem;  /* z.B. etwas mehr Abstand zum Header */
+  background-color: #ffffff;
+  margin-top: 0;
+}
+
+.about-page-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Text-Spalte */
+.about-page-text h1 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  position: relative; /* für gelben Strich */
+}
+
+/* Gelber Strich unter der Hauptüberschrift – wie bei .menu-title */
+.about-page-text h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.4rem;
+  width: 3.5rem;
+  height: 0.25rem;
+  background-color: var(--color-secondary);
+  border-radius: 999px;
+}
+
+.about-page-text h2 {
+  margin: 1.4rem 0 1.2rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-dark);
+}
+
+.about-page-text p {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-dark);
+}
+
+/* Bild-Spalte: klares Karten-Layout */
+.about-page-images {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+/* Oberes, großes Bild (Atmosphäre) */
+.about-image--atmosphere {
+  height: 14rem;
+}
+
+/* Untere Bildreihe: zwei Karten nebeneinander */
+.about-image-row {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Basis-Styles für jedes Bild */
+.about-image {
+  flex: 1;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   ABOUT – RESPONSIVE
+   ========================= */
+
+@media screen and (max-width: 60rem) {
+  .about-page {
+    padding: 2.5rem 2rem 3rem;
+  }
+
+  .about-page-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-page-images {
+    grid-template-rows: auto auto;
+  }
+
+  .about-image--atmosphere {
+    height: 12rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-page {
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .about-image--atmosphere {
+    height: 11rem;
+  }
+
+  .about-image-row {
+    flex-direction: column;
+  }
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+  background-color: var(--color-primary);
+  color: var(--color-text-invert);
+  padding: 2rem 5rem 1rem;
+  margin-top: 0;
+}
+
+/* Logo + 3 Spalten nebeneinander */
+.footer-inner {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Logo-Container */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 30rem;
+}
+
+/* Logo-Größe hier steuern */
+.footer-logo img {
+  height: 160px;       
+  width: auto;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+/* Spalten (Navigation / Contact / Connect) */
+.footer-column {
+  flex: 1;                
+  min-width: 150px;
+}
+
+/* Abstand zwischen den Spalten untereinander */
+.footer-column + .footer-column {
+  margin-left: 2rem;   
+}
+
+/* Überschriften im Footer */
+.footer-header {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+/* Listen im Footer */
+.footer-links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Einträge & Links im Footer */
+.footer-links li,
+.footer-links a {
+  text-align: left;
+  display: block;
+  color: var(--color-text-invert);
+  padding-top: 0.2rem;
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  background-color: transparent; /* kein Hover-Hintergrund nötig */
+}
+
+.footer-note {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-light);
+  font-family: var(--font-body);
+  opacity: 0.9;
+}
+
+/* =========================
+   FOOTER – RESPONSIVE
+   ========================= */
+
+@media screen and (max-width: 600px) {
+  .footer {
+    padding: 1.5rem 2rem 1rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;   /* untereinander auf kleinen Screens */
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    justify-content: center;  /* Logo zentriert auf Mobile */
+  }
+
+  .footer-logo img {
+    height: 64px;
+  }
+
+  .footer-column {
+    width: 100%;
+  }
+
+  .footer-links li,
+  .footer-links a {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================
+   RESERVATION / CONFIRMATION
+   ========================= */
+
+.reserve-table {
+  position: relative;
+  text-align: center;
+  color: var(--color-text-invert);
+  margin-top: -1.4rem;
+}
+
+.header-reserve {
+  width: 100vw;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.reserve-header-text {
+  background-color: var(--color-primary);
+  padding: 0 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  border-radius: var(--border-radius-md);
+}
+
+.reservation-form {
+  padding: 2rem 0 0.5rem;
+  text-align: center;
+}
+
+.reservation-form > div {
+  margin-bottom: 1.5rem;
+}
+
+.confirmation-header {
+  position: relative;
+  text-align: center;
+  color: var(--color-text-invert);
+  margin-top: -1.4rem;
+  min-height: 70vh;
+}
+
+.confirmation-image {
+  height: 70vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.redirect-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 12vw;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+
+@keyframes slideDownFade {
+  0% {
+    transform: translateY(-15%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   CAROUSEL
+   ========================= */
+
+.carousel > .thumbs-wrapper {
+  display: none;
+}
+
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+
+/* bis 60rem (~960px) */
+@media screen and (max-width: 60rem) {
+  .action-button {
+    font-size: 1.2rem;
+  }
+
+  .specials {
+    margin: 0 -2rem;
+  }
+
+  .specials-topbar {
+    flex-wrap: wrap;
+    margin-left: 2rem;
+  }
+
+  .specials-cards {
+    display: none;
+  }
+
+  .specials-carousel {
+    display: block;
+  }
+
+  .menu-card {
+    padding-bottom: 2rem;
+  }
+
+  .testimonials-topbar > h1 {
+    margin: 2rem 0 1rem;
+  }
+
+  .double-image {
+    max-height: 16rem;
+  }
+
+  .about-us {
+    grid-gap: 12vw;
+  }
+}
+
+/* bis 50rem (~800px) */
+@media screen and (max-width: 50rem) {
+  .hero-text > p {
+    font-size: 0.8rem;
+  }
+
+  .reserve-header-text {
+    font-size: 20px;
+  }
+
+  .testimonials-carousel {
+    display: block;
+  }
+
+  .testimonials-cards {
+    display: none;
+  }
+
+  .testimonial-card > p {
+    margin-top: -1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-us {
+    grid-gap: 8vw;
+  }
+
+  .double-image {
+    max-height: 16rem;
+  }
+}
+
+/* bis 600px (überschreibt z.T. die rem-Queries) */
+@media screen and (max-width: 600px) {
+  .hero-text > h1 {
+    font-size: 2.2rem;
+    margin: 0 0 -2rem;
+  }
+
+  .hero-text > h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .confirmation-header {
+    margin-top: 0;
+  }
+
+  .reserve-header-text {
+    font-size: 15px;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .call-to-action {
+    margin: 0;
+    padding: 1.25rem 2rem 1.2rem;
+  }
+
+  .specials,
+  .testimonials {
+    padding: 0 2rem;
+  }
+
+  .about-us {
+    padding: 1rem 2rem 0;
+    margin-top: 2rem;
+    grid-gap: 1vw;
+  }
+
+  .double-image {
+    max-height: 14rem;
+    top: 4rem;
+    left: 2rem;
+  }
+
+  .double-image > img {
+    width: 60%;
+    height: 100%;
+  }
+
+  .about-2 {
+    top: -3rem;
+    left: 4.5rem;
+  }
+
+  footer > menu {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact {
+    display: none;
+  }
+
+  .img-footer > img {
+    margin-top: 0.5rem;
+  }
+
+  ul > * {
+    font-size: 14px;
+  }
+
+  .burger {
+    display: grid;
+  }
+
+  .burger > img {
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .reserve-table {
+    margin-top: 0;
+  }
+
+  .redirect-button {
+    padding: 1vh 2rem;
+    font-size: 14px;
+  }
 }
